@@ -15,5 +15,4 @@ def index():
 @main.route('/profile')
 @login_required
 def profile():
-    print(Wifi_DB.BSSIDDict.keys())
     return render_template('profile.html', name=current_user.name, capturedlist = Wifi_DB.captured, BSSIDDict = Wifi_DB.BSSIDDict)
