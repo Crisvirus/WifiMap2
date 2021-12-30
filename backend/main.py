@@ -16,4 +16,4 @@ def index():
 @login_required
 def profile():
     print(Wifi_DB.BSSIDDict.keys())
-    return render_template('profile.html', name=current_user.name, capturedlist = Wifi_DB.BSSIDDict.keys(), BSSIDDict = Wifi_DB.BSSIDDict)
+    return render_template('profile.html', name=current_user.name, capturedlist = Wifi_DB.captured, BSSIDDict = Wifi_DB.BSSIDDict)
