@@ -1,7 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  Welcome, {{ name }}!
-</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ESSID</th>
+      <th scope="col">BSSID</th>
+      <th scope="col">Latitude</th>
+      <th scope="col">Longitude</th>
+      <th scope="col">Status</th>
+      <th scope="col">Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for BSSID in capturedlist %}
+    <tr>
+      <th>{{BSSIDDict[BSSID].ESSID}}</th>
+      <th>{{BSSIDDict[BSSID].BSSID}}</th>
+      <th>{{BSSIDDict[BSSID].GPSBestLat}}</th>
+      <th>{{BSSIDDict[BSSID].GPSBestLon}}</th>
+      <th>{{BSSIDDict[BSSID].getStatus()}}</th>
+      <th>{{BSSIDDict[BSSID].password}}</th>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 {% endblock %}
