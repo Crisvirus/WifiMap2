@@ -1,3 +1,4 @@
+import json
 class WifiAP:
     def __init__(self, ESSID, BSSID,firstSeen = "Unknown", lastSeen = "Unknown", GPSMinLat = 0, GPSMinLon = 0, GPSMaxLat = 0, GPSMaxLon = 0, GPSBestLat = 0, GPSBestLon = 0):
         self.ESSID = ESSID
@@ -51,5 +52,15 @@ class WifiAP:
 
         if newAP.lastSeen > self.lastSeen:
             self.lastSeen = newAP.lastSeen
+
+    def toJson(self):
+        to_json = {}
+        to_json["ESSID"] = self.ESSID
+        to_json["BSSID"] = self.BSSID
+        to_json["lat"] = self.GPSBestLat
+        to_json["lon"] = self.GPSBestLon
+        to_json["status"] = self.getStatus()
+        to_json["password"] = self.password
+        return json.dumps(to_json)
 
     

@@ -9,6 +9,7 @@ class WifiDB:
     def __init__(self):
         self.ESSIDList = []
         self.BSSIDDict = {}
+        self.BSSIDDictJSON = {}
         self.ESSIDDict = {}
         self.fileslist = []
         self.captured = []
@@ -57,6 +58,8 @@ class WifiDB:
         except:
             last_time = datetime(1970, 1, 1)
         
+        if fields[2] == "":
+            fields[2] = "Hidden ESSID"
         wifiap = WifiAP(fields[2],
                         fields[3],
                         first_time,
@@ -105,3 +108,12 @@ class WifiDB:
                     wifiap = WifiAP(ESSID = entry['SSID'],BSSID=entry['MAC'])
                     wifiap.addPassword(entry['password'])
                     self.BSSIDDict[entry['MAC']] = wifiap
+
+    def getJSONDict(self,status = 7):
+        to_json = {}
+        for key in self.BSSIDDict:
+            wifiap = self.BSSIDDict[key]
+            if wifiap.status & status:
+                to_json[wifiap.BSSID] = wifiap.toJson()
+        return to_json
+
