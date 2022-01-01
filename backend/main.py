@@ -27,7 +27,17 @@ def profile():
 def wifimap():
     return render_template('map.html', name=current_user.name, capturedlist = Wifi_DB.captured, BSSIDDict = Wifi_DB.BSSIDDict)
 
+@main.route('/wifimapcracked')
+@login_required
+def wifimapcracked():
+    return render_template('mapcracked.html', name=current_user.name, capturedlist = Wifi_DB.captured, BSSIDDict = Wifi_DB.BSSIDDict)
+
 @main.route('/api/data')
 @login_required
 def data():
-    return Wifi_DB.getJSONDict(2)
+    return Wifi_DB.getJSONDictLocation()
+
+@main.route('/api/datacracked')
+@login_required
+def datacracked():
+    return Wifi_DB.getJSONDictAllKnown()

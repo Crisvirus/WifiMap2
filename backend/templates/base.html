@@ -39,6 +39,11 @@
                             </a>
                             {% endif %}
                             {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('main.wifimapcracked') }}" class="navbar-item">
+                                Map cracked
+                            </a>
+                            {% endif %}
+                            {% if current_user.is_authenticated %}
                             <a href="{{ url_for('auth.logout') }}" class="navbar-item">
                                 Logout
                             </a>

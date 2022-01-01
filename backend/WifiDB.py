@@ -109,11 +109,19 @@ class WifiDB:
                     wifiap.addPassword(entry['password'])
                     self.BSSIDDict[entry['MAC']] = wifiap
 
-    def getJSONDict(self,status = 7):
+    def getJSONDictLocation(self):
         to_json = {}
         for key in self.BSSIDDict:
             wifiap = self.BSSIDDict[key]
-            if wifiap.status & status:
+            if wifiap.status & 2:
+                to_json[wifiap.BSSID] = wifiap.toJson()
+        return to_json
+
+    def getJSONDictAllKnown(self):
+        to_json = {}
+        for key in self.BSSIDDict:
+            wifiap = self.BSSIDDict[key]
+            if wifiap.status == 7:
                 to_json[wifiap.BSSID] = wifiap.toJson()
         return to_json
 

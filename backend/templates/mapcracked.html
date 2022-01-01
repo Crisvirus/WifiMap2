@@ -35,17 +35,14 @@
           <li class="nav-item">
             <a class="nav-link" href="/profile">Home</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">All captured wifi<span class="sr-only">(current)</span></a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="/wifimapcracked">All cracked wifi</a>
+            <a class="nav-link" href="/wifimap">All captured wifi</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">All cracked wifi<span class="sr-only">(current)</span></a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="/nearby.html">Nearby wifi</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/search.html">Search wifi</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/cracked.html">Show cracked wifis</a>
@@ -81,7 +78,7 @@
       var flightPlanCoordinates=[];
       var flightPath;
       var old_lat,old_long;
-      var HOST = "/api/data";
+      var HOST = "/api/datacracked";
       var currentName = "";
       var currentID = "";
       function initMap() {
