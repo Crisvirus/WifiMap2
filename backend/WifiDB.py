@@ -81,6 +81,8 @@ class WifiDB:
             self.captured.append(BSSID)
             if BSSID in self.BSSIDDict:
                 self.BSSIDDict[BSSID].isCaptured()
+                if self.BSSIDDict[BSSID].ESSID == "Hidden ESSID" and ESSID != "":
+                    self.BSSIDDict[BSSID].ESSID = ESSID
             else:
                 wifiap = WifiAP(ESSID,BSSID)
                 wifiap.isCaptured()
@@ -104,6 +106,8 @@ class WifiDB:
             for entry in json_data:
                 if entry['MAC'] in self.BSSIDDict :
                     self.BSSIDDict[entry['MAC']].addPassword(entry['password'])
+                    if self.BSSIDDict[entry['MAC']].ESSID == "Hidden ESSID" and entry["SSID"] != "":
+                        self.BSSIDDict[entry['MAC']].ESSID = entry["SSID"]
                 else:
                     wifiap = WifiAP(ESSID = entry['SSID'],BSSID=entry['MAC'])
                     wifiap.addPassword(entry['password'])
