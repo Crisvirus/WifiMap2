@@ -13,17 +13,28 @@ class WifiAP:
         self.GPSBestLon = GPSBestLon
         self.password = "Unknown"
         self.status = 0
-        if GPSBestLat != 0:
+        if GPSBestLat != 0.0:
             self.status = 1
         
-        if GPSBestLat == 0 and GPSMaxLat != 0:
-            GPSBestLat = GPSMaxLat
-            GPSBestLon = GPSMaxLon
+        if GPSBestLat == 0.0 and GPSMaxLat != 0.0:
+            print("Lat Max is ok "+str(GPSBestLat) +" " + str(GPSMaxLat))
+            self.GPSBestLat = GPSMaxLat
             self.status = 1
 
-        if GPSBestLat == 0 and GPSMaxLat == 0 and GPSMinLat != 0:
-            GPSBestLat = GPSMinLat
-            GPSBestLon = GPSMinLon
+        if GPSBestLat == 0.0 and GPSMaxLat == 0.0 and GPSMinLat != 0.0:
+            print("Lat Min is ok "+str(GPSBestLat) +" " + str(GPSMaxLat) + " " +str(GPSMinLat))
+            self.GPSBestLat = GPSMinLat
+            self.status = 1
+
+        if GPSBestLon != 0.0:
+            self.status = 1
+        
+        if GPSBestLon == 0.0 and GPSMaxLon != 0.0:
+            self.GPSBestLon = GPSMaxLon
+            self.status = 1
+
+        if GPSBestLon == 0.0 and GPSMaxLon == 0.0 and GPSMinLon != 0.0:
+            self.GPSBestLon = GPSMinLon
             self.status = 1
 
         self.status_list = ["Only Seen","Location known","Only Captured","Captured and known location", "Only Password", "Password and Location", "Password and captured","All is known"]
