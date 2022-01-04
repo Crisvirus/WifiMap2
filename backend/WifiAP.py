@@ -17,12 +17,10 @@ class WifiAP:
             self.status = 1
         
         if GPSBestLat == 0.0 and GPSMaxLat != 0.0:
-            print("Lat Max is ok "+str(GPSBestLat) +" " + str(GPSMaxLat))
             self.GPSBestLat = GPSMaxLat
             self.status = 1
 
         if GPSBestLat == 0.0 and GPSMaxLat == 0.0 and GPSMinLat != 0.0:
-            print("Lat Min is ok "+str(GPSBestLat) +" " + str(GPSMaxLat) + " " +str(GPSMinLat))
             self.GPSBestLat = GPSMinLat
             self.status = 1
 

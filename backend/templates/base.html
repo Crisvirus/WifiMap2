@@ -48,6 +48,11 @@
                                 Logout
                             </a>
                             {% endif %}
+                            {% if current_user.is_authenticated %}
+                            <form method="POST" action="/update">
+                                <button class="button is-block is-info is-large is-fullwidth">Update</button>
+                            </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

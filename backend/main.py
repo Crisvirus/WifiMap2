@@ -1,5 +1,5 @@
 from flask import Blueprint
-from flask import Blueprint, render_template,send_file
+from flask import Blueprint, render_template,send_file, redirect, url_for, flash
 from flask_login import login_required, current_user
 from . import db
 from .WifiDB import WifiDB
@@ -41,3 +41,11 @@ def data():
 @login_required
 def datacracked():
     return Wifi_DB.getJSONDictAllKnown()
+
+@main.route('/update', methods=['POST'])
+@login_required
+def update():
+    Wifi_DB.initialise()
+    flash('Update Ready')
+    return redirect(url_for('main.profile'))
+

@@ -7,6 +7,9 @@ DATA_FOLDER = "/home/cristi/DiverseSSD/WifiMap2/data"
 
 class WifiDB:
     def __init__(self):
+        self.initialise()
+
+    def initialise(self):
         self.ESSIDList = []
         self.BSSIDDict = {}
         self.BSSIDDictJSON = {}
